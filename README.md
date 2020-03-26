@@ -1,8 +1,9 @@
 # README
 
 ## Project links
-Trello: https://trello.com/b/NyPE5bKy/apocalypse-corp
-Slack: apocalypse-corp.slack.com
+
+* Trello: https://trello.com/b/NyPE5bKy/apocalypse-corp
+* Slack: apocalypse-corp.slack.com
 
 ## Getting started
 
