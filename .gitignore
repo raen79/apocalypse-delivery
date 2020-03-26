@@ -29,3 +29,6 @@
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+
+# Dont commit local env settings
+.env
