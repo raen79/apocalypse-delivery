@@ -1,0 +1,17 @@
+version: 2
+
+jobs:
+  ruby-2.7:
+    docker:
+      - image: circleci/ruby:2.7
+    steps:
+      - checkout
+      - run: bundle install
+      - run: bundle exec rspec
+      - run: bundle exec rubocop
+  
+workflows:
+  version: 2
+  build:
+    jobs:
+      - ruby-2.7
