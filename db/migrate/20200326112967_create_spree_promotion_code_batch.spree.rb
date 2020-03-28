@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # This migration comes from spree (originally 20161017102621)
 
 class CreateSpreePromotionCodeBatch < ActiveRecord::Migration[5.0]
@@ -9,21 +10,13 @@ class CreateSpreePromotionCodeBatch < ActiveRecord::Migration[5.0]
       t.integer :number_of_codes, null: false
       t.string :email
       t.string :error
-      t.string :state, default: "pending"
+      t.string :state, default: 'pending'
       t.timestamps precision: 6
     end
 
-    add_foreign_key(
-      :spree_promotion_code_batches,
-      :spree_promotions,
-      column: :promotion_id
-    )
+    add_foreign_key(:spree_promotion_code_batches, :spree_promotions, column: :promotion_id)
 
-    add_column(
-      :spree_promotion_codes,
-      :promotion_code_batch_id,
-      :integer
-    )
+    add_column(:spree_promotion_codes, :promotion_code_batch_id, :integer)
 
     add_foreign_key(
       :spree_promotion_codes,
@@ -31,9 +24,6 @@ class CreateSpreePromotionCodeBatch < ActiveRecord::Migration[5.0]
       column: :promotion_code_batch_id
     )
 
-    add_index(
-      :spree_promotion_codes,
-      :promotion_code_batch_id
-    )
+    add_index(:spree_promotion_codes, :promotion_code_batch_id)
   end
 end

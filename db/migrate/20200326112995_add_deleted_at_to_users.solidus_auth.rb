@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # This migration comes from solidus_auth (originally 20140904000425)
 
 class AddDeletedAtToUsers < SolidusSupport::Migration[4.2]

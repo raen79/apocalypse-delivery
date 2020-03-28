@@ -1,12 +1,13 @@
 # frozen_string_literal: true
+
 # This migration comes from spree (originally 20190106184413)
 
 require 'solidus/migrations/promotions_with_code_handlers'
 
 class RemoveCodeFromSpreePromotions < ActiveRecord::Migration[5.1]
   class Promotion < ActiveRecord::Base
-    self.table_name = "spree_promotions"
-    self.ignored_columns = %w(type)
+    self.table_name = 'spree_promotions'
+    self.ignored_columns = %w[type]
   end
 
   def up
@@ -29,15 +30,6 @@ class RemoveCodeFromSpreePromotions < ActiveRecord::Migration[5.1]
   end
 
   def self.promotions_with_code_handler
-    # We propose different approaches, just pick the one that you prefer or
-    # write your custom one.
-    #
-    # The fist one (raising an exception) is the default but you can
-    # comment/uncomment the one then better fits you needs or use a
-    # custom class or callable object.
-    #
-    Solidus::Migrations::PromotionWithCodeHandlers::RaiseException
-    # Solidus::Migrations::PromotionWithCodeHandlers::MoveToSpreePromotionCode
-    # Solidus::Migrations::PromotionWithCodeHandlers::DoNothing
+    Solidus::Migrations::PromotionWithCodeHandlers::RaiseException # Solidus::Migrations::PromotionWithCodeHandlers::DoNothing
   end
 end
