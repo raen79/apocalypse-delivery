@@ -11,7 +11,7 @@ jobs:
       - restore_cache:
           key: node-modules-v1-{{ checksum "yarn.lock" }}
       - run: yarn
-      - run: bundle install --jobs=4 --retry=3 --path vendor/bundle
+      - run: bundle install --jobs=1 --retry=3 --path vendor/bundle
       - save_cache:
           key: gem-cache-v1-{{ checksum "Gemfile.lock" }}
           paths:
