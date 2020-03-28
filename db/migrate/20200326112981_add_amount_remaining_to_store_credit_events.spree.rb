@@ -40,8 +40,7 @@ class AddAmountRemainingToStoreCreditEvents < ActiveRecord::Migration[5.0]
           credit_amount
         when StoreCredit::AUTHORIZE_ACTION, StoreCredit::INVALIDATE_ACTION # These actions remove the amount from the available credit amount.
           credit_amount -= event.amount
-        when StoreCredit::ADJUSTMENT_ACTION, StoreCredit::CREDIT_ACTION,
-             StoreCredit::VOID_ACTION # end up subtracting the amount). # ADJUSTMENT_ACTION the event's amount could be negative (so it could # These actions add the amount to the available credit amount. For
+        when StoreCredit::ADJUSTMENT_ACTION, StoreCredit::CREDIT_ACTION, StoreCredit::VOID_ACTION # end up subtracting the amount). # ADJUSTMENT_ACTION the event's amount could be negative (so it could # These actions add the amount to the available credit amount. For
           credit_amount += event.amount
         end
 

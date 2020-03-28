@@ -17,12 +17,9 @@ class AddResetPasswordTokenIndexToSpreeUsers < SolidusSupport::Migration[4.2] # 
 
   def up
     Spree::User.reset_column_information
-    if Spree::User.column_names.include?('reset_password_token') &&
-         !default_index_exists? &&
+    if Spree::User.column_names.include?('reset_password_token') && !default_index_exists? &&
          !custom_index_exists?
-      add_index :spree_users,
-                :reset_password_token,
-                unique: true, name: custom_index_name
+      add_index :spree_users, :reset_password_token, unique: true, name: custom_index_name
     end
   end
 

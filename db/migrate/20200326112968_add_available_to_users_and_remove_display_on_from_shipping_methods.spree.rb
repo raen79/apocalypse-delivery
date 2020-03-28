@@ -2,16 +2,9 @@
 
 # This migration comes from spree (originally 20161123154034)
 
-class AddAvailableToUsersAndRemoveDisplayOnFromShippingMethods < ActiveRecord::Migration[
-  5.0
-]
+class AddAvailableToUsersAndRemoveDisplayOnFromShippingMethods < ActiveRecord::Migration[5.0]
   def up
-    add_column(
-      :spree_shipping_methods,
-      :available_to_users,
-      :boolean,
-      default: true
-    )
+    add_column(:spree_shipping_methods, :available_to_users, :boolean, default: true)
     execute(
       'UPDATE spree_shipping_methods ' \
         "SET available_to_users=#{quoted_false} " \

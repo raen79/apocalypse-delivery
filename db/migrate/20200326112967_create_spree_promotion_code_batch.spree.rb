@@ -14,11 +14,7 @@ class CreateSpreePromotionCodeBatch < ActiveRecord::Migration[5.0]
       t.timestamps precision: 6
     end
 
-    add_foreign_key(
-      :spree_promotion_code_batches,
-      :spree_promotions,
-      column: :promotion_id
-    )
+    add_foreign_key(:spree_promotion_code_batches, :spree_promotions, column: :promotion_id)
 
     add_column(:spree_promotion_codes, :promotion_code_batch_id, :integer)
 

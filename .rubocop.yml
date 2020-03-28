@@ -9,10 +9,13 @@ Style/HashTransformKeys:
 Style/HashTransformValues:
   Enabled: true
 AllCops:
-  Excludes:
+  Exclude:
     - db/schema.rb
     - db/migrate/*
     - Gemfile
     - node_modules/node-sass/src/libsass/contrib/*
     - node_modules/node-sass/src/libsass/*
     - bin/bundle
+    - node_modules/@prettier/plugin-ruby/src/*
+    - node_modules/@prettier/plugin-ruby/src/haml/*
+    - node_modules/@prettier/plugin-ruby/bin/*

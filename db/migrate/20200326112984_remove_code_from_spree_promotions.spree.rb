@@ -17,8 +17,7 @@ class RemoveCodeFromSpreePromotions < ActiveRecord::Migration[5.1]
       # You have some promotions with "code" field present! This is not good
       # since we are going to remove that column.
       #
-      self.class.promotions_with_code_handler.new(self, promotions_with_code)
-        .call
+      self.class.promotions_with_code_handler.new(self, promotions_with_code).call
     end
 
     remove_index :spree_promotions, name: :index_spree_promotions_on_code

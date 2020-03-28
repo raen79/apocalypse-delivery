@@ -11,10 +11,7 @@ class MigrateCreditCardsToWalletPaymentSources < ActiveRecord::Migration[4.2]
   end
 
   def up
-    credit_cards =
-      CreditCard.where.not(gateway_customer_profile_id: nil).where.not(
-        user_id: nil
-      )
+    credit_cards = CreditCard.where.not(gateway_customer_profile_id: nil).where.not(user_id: nil)
 
     credit_cards.find_each do |credit_card|
       WalletPaymentSource.find_or_create_by!(
