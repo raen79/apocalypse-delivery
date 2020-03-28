@@ -6,13 +6,9 @@ jobs:
       - image: circleci/ruby:2.7
     steps:
       - restore_cache:
-          keys:
-            - gem-cache-v1-{{ checksum "Gemfile.lock" }}
-            - gem-cache-v1
+          key: gem-cache-v1-{{ checksum "Gemfile.lock" }}
       - restore_cache:
-          keys:
-            - node-modules-v1-{{ checksum "package-lock.json" }}
-            - node-modules-v1
+          key: node-modules-v1-{{ checksum "package-lock.json" }}
       - checkout
       - run: yarn
       - run: bundle install
@@ -33,3 +29,9 @@ workflows:
   build:
     jobs:
       - test
+
+- restore_cache:
+    keys:
+      - v1-myapp-{{ arch }}-{{ checksum "project.clj" }}
+      # if cache for exact version of `project.clj` is not present then load any most recent one
+      - v1-myapp-
