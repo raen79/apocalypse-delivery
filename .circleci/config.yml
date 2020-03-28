@@ -1,4 +1,4 @@
-version: 2
+version: 2.1
 
 jobs:
   test:
@@ -29,9 +29,3 @@ workflows:
   build:
     jobs:
       - test
-
-- restore_cache:
-    keys:
-      - v1-myapp-{{ arch }}-{{ checksum "project.clj" }}
-      # if cache for exact version of `project.clj` is not present then load any most recent one
-      - v1-myapp-
