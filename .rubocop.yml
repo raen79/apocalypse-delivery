@@ -16,6 +16,7 @@ AllCops:
     - node_modules/node-sass/src/libsass/contrib/*
     - node_modules/node-sass/src/libsass/*
     - bin/bundle
+    - node_modules/@prettier/plugin-ruby/*
     - node_modules/@prettier/plugin-ruby/src/*
     - node_modules/@prettier/plugin-ruby/src/haml/*
     - node_modules/@prettier/plugin-ruby/bin/*

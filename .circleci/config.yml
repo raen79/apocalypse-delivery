@@ -12,9 +12,6 @@ jobs:
           key: node-modules-v1-{{ checksum "yarn.lock" }}
       - run: yarn
       - run: bundle install
-      - run: bundle exec rspec
-      - run: bundle exec rubocop
-      - run: rails format:check
       - save_cache:
           key: gem-cache-v1-{{ checksum "Gemfile.lock" }}
           paths:
@@ -23,6 +20,9 @@ jobs:
           key: node-modules-v1-{{ checksum "yarn.lock" }}
           paths:
             - node_modules
+      - run: bundle exec rspec
+      - run: bundle exec rubocop
+      - run: rails format:check
 
 workflows:
   version: 2
