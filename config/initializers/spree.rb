@@ -1,14 +1,16 @@
+# frozen_string_literal: true
+
 # Configure Solidus Preferences
 # See http://docs.solidus.io/Spree/AppConfiguration.html for details
 
 Spree.config do |config|
   # Core:
-
   # Default currency for new sites
-  config.currency = "USD"
+  config.currency =
+    'USD'
 
   # from address for transactional emails
-  config.mails_from = "store@example.com"
+  config.mails_from = 'store@example.com'
 
   # Uncomment to stop tracking inventory levels in the application
   # config.track_inventory_levels = false
@@ -22,13 +24,11 @@ Spree.config do |config|
   config.image_attachment_module = 'Spree::Image::PaperclipAttachment'
   config.taxon_attachment_module = 'Spree::Taxon::PaperclipAttachment'
 
-
   # Permission Sets:
 
   # Uncomment and customize the following line to add custom permission sets
   # to a custom users role:
   # config.roles.assign_permissions :role_name, ['Spree::PermissionSets::CustomPermissionSet']
-
 
   # Frontend:
 
@@ -37,7 +37,6 @@ Spree.config do |config|
 
   # Template to use when rendering layout
   # config.layout = "spree/layouts/spree_application"
-
 
   # Admin:
 
@@ -60,9 +59,7 @@ Spree.config do |config|
   # )
 end
 
-Spree::Frontend::Config.configure do |config|
-  config.locale = 'en'
-end
+Spree::Frontend::Config.configure { |config| config.locale = 'en' }
 
 Spree::Backend::Config.configure do |config|
   config.locale = 'en'
@@ -77,11 +74,9 @@ Spree::Backend::Config.configure do |config|
   # )
 end
 
-Spree::Api::Config.configure do |config|
-  config.requires_authentication = true
-end
+Spree::Api::Config.configure { |config| config.requires_authentication = true }
 
-Spree.user_class = "Spree::LegacyUser"
+Spree.user_class = 'Spree::LegacyUser'
 
 # If you want to add a field to the whitelisted ransackable attributes,
 # just uncomment the following code and change it as you need.

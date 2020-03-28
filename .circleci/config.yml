@@ -9,7 +9,8 @@ jobs:
       - run: bundle install
       - run: bundle exec rspec
       - run: bundle exec rubocop
-  
+      - run: rails format:check
+
 workflows:
   version: 2
   build:

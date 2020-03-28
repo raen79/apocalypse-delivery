@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # This migration comes from solidus_auth (originally 20101214150824)
 
 class ConvertUserRememberField < SolidusSupport::Migration[4.2]

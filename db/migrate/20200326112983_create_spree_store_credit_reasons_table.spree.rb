@@ -1,13 +1,14 @@
 # frozen_string_literal: true
+
 # This migration comes from spree (originally 20180710170104)
 
 class CreateSpreeStoreCreditReasonsTable < ActiveRecord::Migration[5.1]
   class StoreCreditUpdateReason < ActiveRecord::Base
-    self.table_name = "spree_store_credit_update_reasons"
+    self.table_name = 'spree_store_credit_update_reasons'
   end
 
   class StoreCreditReason < ActiveRecord::Base
-    self.table_name = "spree_store_credit_reasons"
+    self.table_name = 'spree_store_credit_reasons'
   end
 
   def up
@@ -23,7 +24,7 @@ class CreateSpreeStoreCreditReasonsTable < ActiveRecord::Migration[5.1]
     end
 
     add_column :spree_store_credit_events, :store_credit_reason_id, :integer
-    execute "update spree_store_credit_events set store_credit_reason_id = update_reason_id"
+    execute 'update spree_store_credit_events set store_credit_reason_id = update_reason_id'
 
     # TODO: table spree_store_credit_update_reasons and column
     # column spree_store_credit_update_reasons.update_reason_id
@@ -31,9 +32,6 @@ class CreateSpreeStoreCreditReasonsTable < ActiveRecord::Migration[5.1]
   end
 
   def down
-    # This table and column  may not exist anymore as another irreversible
-    # migration may have removed it later. They must be added back or the
-    # `up` method would fail
     unless table_exists? :spree_store_credit_update_reasons
       create_table :spree_store_credit_update_reasons do |t|
         t.string :name
@@ -52,5 +50,5 @@ class CreateSpreeStoreCreditReasonsTable < ActiveRecord::Migration[5.1]
 
     drop_table :spree_store_credit_reasons
     remove_column :spree_store_credit_events, :store_credit_reason_id
-  end
+  end # `up` method would fail
 end

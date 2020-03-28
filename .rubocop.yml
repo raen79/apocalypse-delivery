@@ -1,0 +1,18 @@
+Layout/LineLength:
+  Max: 125
+Style/Documentation:
+  Enabled: false
+Style/HashEachMethods:
+  Enabled: true
+Style/HashTransformKeys:
+  Enabled: true
+Style/HashTransformValues:
+  Enabled: true
+AllCops:
+  Excludes:
+    - db/schema.rb
+    - db/migrate/*
+    - Gemfile
+    - node_modules/node-sass/src/libsass/contrib/*
+    - node_modules/node-sass/src/libsass/*
+    - bin/bundle
