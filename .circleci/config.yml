@@ -4,6 +4,8 @@ jobs:
   test:
     docker:
       - image: circleci/ruby:2.7-node
+        environment:
+          RAILS_ENV: test
       - image: circleci/postgres:9.6.2-alpine
         environment:
           POSTGRES_DB: apocalypse_delivery_test
@@ -23,6 +25,9 @@ jobs:
           key: node-modules-v2-{{ checksum "yarn.lock" }}
           paths:
             - node_modules
+      - run:
+          name: Wait for DB
+          command: dockerize -wait tcp://localhost:5432 -timeout 1m
       - run:
           name: Setup DB
           command: |
