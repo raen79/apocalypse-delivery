@@ -24,7 +24,7 @@ default: &default
 development:
   <<: *default
   database: apocalypse_delivery_development
-  username: <%= ENV['APOCALYPSE_DELIVERY_DATABASE_USERNAME'] || postgres %>
+  username: <%= ENV['APOCALYPSE_DELIVERY_DATABASE_USERNAME'] %>
   password: <%= ENV['APOCALYPSE_DELIVERY_DATABASE_PASSWORD'] %>
 
   # The specified database role being used to connect to postgres.
@@ -55,7 +55,7 @@ development:
 test:
   <<: *default
   database: apocalypse_delivery_test
-  username: <%= ENV['APOCALYPSE_DELIVERY_DATABASE_USERNAME'] || postgres %>
+  username: <%= ENV['APOCALYPSE_DELIVERY_DATABASE_USERNAME'] %>
   password: <%= ENV['APOCALYPSE_DELIVERY_DATABASE_PASSWORD'] %>
 
 # As with config/credentials.yml, you never want to store sensitive information,
