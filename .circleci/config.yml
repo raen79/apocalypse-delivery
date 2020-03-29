@@ -27,8 +27,8 @@ jobs:
       - run:
           name: Setup DB
           command: |
-            RAILS_ENV=test rails db:create
-            RAILS_ENV=test rails db:migrate
+            RAILS_ENV=test bin/rails db:create
+            RAILS_ENV=test bin/rails db:migrate
       - run:
           name: Run rubocop
           command: RAILS_ENV=test bundle exec rubocop
