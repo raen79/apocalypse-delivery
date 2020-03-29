@@ -35,7 +35,6 @@ jobs:
           name: Setup DB
           command: |
             sudo apt install -y postgresql-client || true
-            bin/rails db:create
             bin/rails db:migrate
       - run:
           name: Run rubocop
