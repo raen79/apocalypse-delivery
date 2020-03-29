@@ -4,6 +4,10 @@ jobs:
   test:
     docker:
       - image: circleci/ruby:2.7-node
+      - image: circleci/postgres:9.6.2-alpine
+        environment:
+          POSTGRES_USER: postgres
+          POSTGRES_DB: apocalypse_delivery_test
     steps:
       - checkout
       - restore_cache:
@@ -20,9 +24,20 @@ jobs:
           key: node-modules-v2-{{ checksum "yarn.lock" }}
           paths:
             - node_modules
-      - run: bundle exec rspec
-      - run: bundle exec rubocop
-      - run: bin/rails format:check
+      - run:
+          name: Setup DB
+          command: |
+            RAILS_ENV=test rails db:create
+            RAILS_ENV=test rails db:migrate
+      - run:
+          name: Run rubocop
+          command: RAILS_ENV=test bundle exec rubocop
+      - run:
+          name: Check formatting
+          command: RAILS_ENV=test bin/rails format:check
+      - run:
+          name: Run specs
+          command: RAILS_ENV=test bundle exec rspec
 
 workflows:
   version: 2
