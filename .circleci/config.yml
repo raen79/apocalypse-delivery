@@ -1,9 +1,17 @@
-version: 2.1
+version: 2.0
 
 jobs:
   test:
     docker:
       - image: circleci/ruby:2.7-node
+        environment:
+          RAILS_ENV: test
+          PGHOST: 127.0.0.1
+          PGUSER: root
+      - image: circleci/postgres:9.6.2-alpine
+        environment:
+          POSTGRES_USER: root
+          POSTGRES_DB: apocalypse_delivery_test
     steps:
       - checkout
       - restore_cache:
@@ -20,9 +28,23 @@ jobs:
           key: node-modules-v2-{{ checksum "yarn.lock" }}
           paths:
             - node_modules
-      - run: bundle exec rspec
-      - run: bundle exec rubocop
-      - run: bin/rails format:check
+      - run:
+          name: Run rubocop
+          command: bundle exec rubocop
+      - run:
+          name: Check formatting
+          command: bin/rails format:check
+      - run:
+          name: Wait for DB
+          command: dockerize -wait tcp://localhost:5432 -timeout 1m
+      - run:
+          name: Setup DB
+          command: |
+            sudo apt install -y postgresql-client || true
+            bin/rails db:migrate
+      - run:
+          name: Run specs
+          command: bundle exec rspec
 
 workflows:
   version: 2

@@ -12,6 +12,7 @@
 - Install the gems: `bundle install`, this might require some libraries depending on your system (eg. libpq)
 - Install the npm package: `yarn`
 - Copy `.env.example` to `.env` and change the settings.
+- Run `rails db:setup`
 - Enjoy!
 
 ## Formatting
