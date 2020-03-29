@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -12,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_200_326_112_997) do
+ActiveRecord::Schema.define(version: 2020_03_29_011607) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'plpgsql'
 
@@ -1232,6 +1230,22 @@ ActiveRecord::Schema.define(version: 20_200_326_112_997) do
     t.datetime 'updated_at', precision: 6
   end
 
+  create_table 'stores', force: :cascade do |t|
+    t.string 'name', null: false
+    t.string 'email', null: false
+    t.string 'postcode', null: false
+    t.string 'street', null: false
+    t.string 'street_number', null: false
+    t.string 'city', null: false
+    t.string 'country', null: false
+    t.string 'phone_number', null: false
+    t.boolean 'is_hub', default: true, null: false
+    t.bigint 'spree_taxon_id', null: false
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.index %w[spree_taxon_id], name: 'index_stores_on_spree_taxon_id'
+  end
+
   add_foreign_key 'active_storage_attachments', 'active_storage_blobs', column: 'blob_id'
   add_foreign_key 'spree_promotion_code_batches', 'spree_promotions', column: 'promotion_id'
   add_foreign_key 'spree_promotion_codes',
@@ -1240,4 +1254,5 @@ ActiveRecord::Schema.define(version: 20_200_326_112_997) do
   add_foreign_key 'spree_tax_rate_tax_categories', 'spree_tax_categories', column: 'tax_category_id'
   add_foreign_key 'spree_tax_rate_tax_categories', 'spree_tax_rates', column: 'tax_rate_id'
   add_foreign_key 'spree_wallet_payment_sources', 'spree_users', column: 'user_id'
+  add_foreign_key 'stores', 'spree_taxons'
 end
