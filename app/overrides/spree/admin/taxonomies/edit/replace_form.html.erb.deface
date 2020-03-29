@@ -1,0 +1,4 @@
+<!--
+  surround "fieldset.no-border-top"
+-->
+<% unless @taxonomy.locked? %><%= render_original %><% end %>
