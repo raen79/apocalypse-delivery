@@ -11,5 +11,5 @@
 Spree::Core::Engine.load_seed if defined?(Spree::Core)
 Spree::Auth::Engine.load_seed if defined?(Spree::Auth)
 
-store_taxonomy = Spree::Taxonomy.create!(name: Store::TAXONOMY_NAME, position: 1)
+store_taxonomy = Spree::Taxonomy.create!(name: Store::TAXONOMY_NAME, position: 1, locked: true)
 Spree::Taxon.create(name: Store::TAXONOMY_NAME, taxonomy: store_taxonomy)
