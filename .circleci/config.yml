@@ -7,13 +7,13 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: gem-cache-v1-{{ checksum "Gemfile.lock" }}
+          key: gem-cache-v2-{{ checksum "Gemfile.lock" }}
       - restore_cache:
           key: node-modules-v2-{{ checksum "yarn.lock" }}
       - run: yarn
       - run: bundle install --jobs=1 --retry=3 --path vendor/bundle
       - save_cache:
-          key: gem-cache-v1-{{ checksum "Gemfile.lock" }}
+          key: gem-cache-v2-{{ checksum "Gemfile.lock" }}
           paths:
             - vendor/bundle
       - save_cache:
