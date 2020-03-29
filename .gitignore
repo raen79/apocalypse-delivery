@@ -30,5 +30,7 @@
 yarn-debug.log*
 .yarn-integrity
 
+vendor/bundle
+
 # Dont commit local env settings
 .env

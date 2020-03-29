@@ -20,3 +20,4 @@ AllCops:
     - node_modules/@prettier/plugin-ruby/src/*
     - node_modules/@prettier/plugin-ruby/src/haml/*
     - node_modules/@prettier/plugin-ruby/bin/*
+    - vendor/**/*
