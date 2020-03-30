@@ -1,0 +1,43 @@
+<% content_for :page_title do %>
+  <%= t('.title') %>
+<% end %>
+
+<% content_for :page_actions do %>
+  <li><%= link_to t('.new_store'), new_admin_trade_store_path, class: 'btn btn-primary' %></li>
+<% end %>
+
+<%= paginate @stores %>
+
+<% if @stores.any? %>
+  <table class="index">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Location</th>
+        <th>Type</th>
+        <th>Last changed on</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @stores.each do |store| %>
+        <tr>
+          <td><%= link_to store.name, edit_admin_trade_store_url(store) %></td>
+          <td><%= mail_to store.email %></td>
+          <td><%= store.phone_number %></td>
+          <td><%= store.city %>, <%= store.country %></td>
+          <td><%= store.is_hub ? 'Hub' : '' %></td>
+          <td class="align-center"><%= l store.updated_at.to_date %></td>
+          <td class="actions">
+          <%= link_to_edit store, no_text: true %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+
+<%= paginate @stores %>

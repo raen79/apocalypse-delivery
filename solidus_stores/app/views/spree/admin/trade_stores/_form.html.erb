@@ -1,0 +1,63 @@
+<div data-hook="admin_trade_store_form_fields" class="row">
+  <div class="col-6">
+    <%= f.field_container :name do %>
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'fullwidth' %>
+      <%= error_message_on :store, :name %>
+    <% end %>
+
+    <%= f.field_container :email do %>
+      <%= f.label :email %>
+      <%= f.email_field :email, class: 'fullwidth' %>
+      <%= error_message_on :store, :email %>
+    <% end %>
+
+    <%= f.field_container :phone_number do %>
+      <%= f.label :phone_number %>
+      <%= f.text_field :phone_number, class: 'fullwidth' %>
+      <%= error_message_on :store, :phone_number %>
+    <% end %>   
+
+    <div class="field">
+      <span data-hook="is_hub">
+        <label>
+          <%= f.check_box :is_hub %>
+          <%= t('.is_hub') %>
+        </label>
+      </span>
+    </div>
+  </div>
+
+  <div class="col-6">
+
+    <%= f.field_container :street do %>
+      <%= f.label :street %>
+      <%= f.text_field :street, class: 'fullwidth' %>
+      <%= error_message_on :store, :street %>
+    <% end %>
+
+    <%= f.field_container :street_number do %>
+      <%= f.label :street_number %>
+      <%= f.text_field :street_number, class: 'fullwidth' %>
+      <%= error_message_on :store, :street_number %>
+    <% end %>
+
+    <%= f.field_container :postcode do %>
+      <%= f.label :postcode %>
+      <%= f.text_field :postcode, class: 'fullwidth' %>
+      <%= error_message_on :store, :postcode %>
+    <% end %>
+
+    <%= f.field_container :city do %>
+      <%= f.label :city %>
+      <%= f.text_field :city, class: 'fullwidth' %>
+      <%= error_message_on :store, :city %>
+    <% end %>
+
+    <%= f.field_container :country do %>
+      <%= f.label :country %>
+      <%= f.text_field :country, class: 'fullwidth' %>
+      <%= error_message_on :store, :country %>
+    <% end %>
+  </div>
+</div>
