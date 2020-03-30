@@ -6,8 +6,8 @@ module SolidusStores
       class_option :auto_run_migrations, type: :boolean, default: false
 
       def add_javascripts
-        append_file 'vendor/assets/javascripts/spree/frontend/all.js', "//= require spree/frontend/solidus_stores\n" # rubocop:disable Metrics/LineLength
-        append_file 'vendor/assets/javascripts/spree/backend/all.js', "//= require spree/backend/solidus_stores\n" # rubocop:disable Metrics/LineLength
+        append_file 'vendor/assets/javascripts/spree/frontend/all.js', "//= require spree/frontend/solidus_stores\n"
+        append_file 'vendor/assets/javascripts/spree/backend/all.js', "//= require spree/backend/solidus_stores\n"
       end
 
       def add_stylesheets
@@ -24,7 +24,7 @@ module SolidusStores
         if run_migrations
           run 'bin/rails db:migrate'
         else
-          puts 'Skipping bin/rails db:migrate, don\'t forget to run it!' # rubocop:disable Rails/Output
+          puts 'Skipping bin/rails db:migrate, don\'t forget to run it!'
         end
       end
     end

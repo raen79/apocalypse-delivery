@@ -16,9 +16,9 @@ module SolidusStores
       g.test_framework :rspec
     end
 
-
     initializer 'subscriptions_backend' do
       next unless Spree::Backend::Config.respond_to?(:menu_items)
+
       Spree::Backend::Config.configure do |config|
         config.menu_items << config.class::MenuItem.new(
           [:trade_stores],

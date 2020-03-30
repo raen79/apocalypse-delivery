@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Spree
   module Admin
     class TradeStoresController < ResourceController
@@ -17,7 +19,7 @@ module Spree
           flash[:success] = t('.created_successfully')
           redirect_to edit_admin_trade_store_url(@store)
         else
-          flash.now[:error] = @store.errors.full_messages.join(", ")
+          flash.now[:error] = @store.errors.full_messages.join(', ')
           render :new, status: :unprocessable_entity
         end
       end
@@ -26,13 +28,13 @@ module Spree
         @store = ::Store.find(params[:id])
       end
 
-      def update
+      def update # rubocop:disable Metrics/AbcSize
         @store = ::Store.find(params[:id])
         if @store.update(store_params)
           flash[:success] = t('.updated')
           redirect_to edit_admin_trade_store_url(@store)
         else
-          flash.now[:error] = @store.errors.full_messages.join(", ")
+          flash.now[:error] = @store.errors.full_messages.join(', ')
           render :edit, status: :unprocessable_entity
         end
       end
@@ -43,8 +45,18 @@ module Spree
         ::Store
       end
 
-      def store_params
-        params.require(:store).permit(:name, :email, :postcode, :street, :street_number, :city, :country, :phone_number, :is_hub)
+      def store_params # rubocop:disable Metrics/MethodLength
+        params.require(:store).permit(
+          :name,
+          :email,
+          :postcode,
+          :street,
+          :street_number,
+          :city,
+          :country,
+          :phone_number,
+          :is_hub
+        )
       end
     end
   end
