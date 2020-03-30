@@ -1,0 +1,32 @@
+<!--
+  surround "div#taxonomy_tree"
+-->
+<% if @taxonomy.locked? %>
+  <h3><%= @taxonomy.name.titleize %> Taxonomy</h3>
+
+  <br />
+
+  <table class="index" id='listing_taxonomies'>
+    <colgroup>
+      <col style="width: 10%">
+      <col style="width: 75%">
+      <col style="width: 15%">
+    </colgroup>
+
+    <thead>
+      <tr data-hook="taxonomies_header">
+        <th>Taxon name</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @taxonomy.taxons.each do |taxon| %>
+        <tr id="<%= spree_dom_id taxon %>" data-hook="taxonomies_row">
+          <td><%= taxon.name %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <%= render_original %>
+<% end %>

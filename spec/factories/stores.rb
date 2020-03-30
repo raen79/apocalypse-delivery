@@ -23,5 +23,6 @@ FactoryBot.define do
   factory :store_taxonomy, class: Spree::Taxonomy do
     name { Store::TAXONOMY_NAME }
     position { 1 }
+    locked { true }
   end
 end

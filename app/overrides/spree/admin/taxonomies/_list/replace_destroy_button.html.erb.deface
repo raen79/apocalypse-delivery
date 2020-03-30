@@ -1,0 +1,4 @@
+<!--
+  replace_contents "erb:contains('can?(:destroy, taxonomy)')"
+-->
+if !taxonomy.locked? && can?(:destroy, taxonomy)

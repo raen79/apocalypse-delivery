@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_29_011607) do
+ActiveRecord::Schema.define(version: 2020_03_29_162644) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'plpgsql'
 
@@ -1052,6 +1052,7 @@ ActiveRecord::Schema.define(version: 2020_03_29_011607) do
     t.datetime 'created_at', precision: 6
     t.datetime 'updated_at', precision: 6
     t.integer 'position', default: 0
+    t.boolean 'locked', default: false
     t.index %w[position], name: 'index_spree_taxonomies_on_position'
   end
 
