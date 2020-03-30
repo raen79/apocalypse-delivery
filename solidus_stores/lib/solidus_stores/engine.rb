@@ -12,19 +12,14 @@ module SolidusStores
     engine_name 'solidus_stores'
 
     # use rspec for tests
-    config.generators do |g|
-      g.test_framework :rspec
-    end
+    config.generators { |g| g.test_framework :rspec }
 
     initializer 'subscriptions_backend' do
       next unless Spree::Backend::Config.respond_to?(:menu_items)
 
       Spree::Backend::Config.configure do |config|
-        config.menu_items << config.class::MenuItem.new(
-          [:trade_stores],
-          'home',
-          url: :admin_trade_stores_path
-        )
+        config.menu_items <<
+          config.class::MenuItem.new(%i[trade_stores], 'home', url: :admin_trade_stores_path)
       end
     end
   end

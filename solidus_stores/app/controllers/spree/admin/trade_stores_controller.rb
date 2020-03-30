@@ -6,7 +6,8 @@ module Spree
       skip_before_action :load_resource, only: :index
 
       def index
-        @stores = ::Store.page(params[:page]).per(params[:per_page] || Spree::Config[:orders_per_page])
+        @stores =
+          ::Store.page(params[:page]).per(params[:per_page] || Spree::Config[:orders_per_page])
       end
 
       def new
@@ -28,7 +29,7 @@ module Spree
         @store = ::Store.find(params[:id])
       end
 
-      def update # rubocop:disable Metrics/AbcSize
+      def update
         @store = ::Store.find(params[:id])
         if @store.update(store_params)
           flash[:success] = t('.updated')
@@ -45,7 +46,7 @@ module Spree
         ::Store
       end
 
-      def store_params # rubocop:disable Metrics/MethodLength
+      def store_params
         params.require(:store).permit(
           :name,
           :email,
@@ -57,7 +58,7 @@ module Spree
           :phone_number,
           :is_hub
         )
-      end
+      end # rubocop:disable Metrics/MethodLength
     end
   end
 end
