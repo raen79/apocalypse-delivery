@@ -14,8 +14,7 @@ module Admin
     def create
       @store = ::Store.new(store_params)
       if @store.save
-        flash[:success] = t('.created_successfully')
-        redirect_to edit_admin_trade_store_url(@store)
+        redirect_to edit_admin_trade_store_url(@store), notice: t('.created_successfully')
       else
         flash.now[:error] = @store.errors.full_messages.join(', ')
         render :new, status: :unprocessable_entity
@@ -28,9 +27,9 @@ module Admin
 
     def update
       @store = ::Store.find(params[:id])
+
       if @store.update(store_params)
-        flash[:success] = t('.updated')
-        redirect_to edit_admin_trade_store_url(@store)
+        redirect_to edit_admin_trade_store_url(@store), notice: t('.updated')
       else
         flash.now[:error] = @store.errors.full_messages.join(', ')
         render :edit, status: :unprocessable_entity
@@ -43,6 +42,7 @@ module Admin
       ::Store
     end
 
+    # rubocop:disable Metrics/MethodLength
     def store_params
       params.require(:store).permit(
         :name,
@@ -55,6 +55,8 @@ module Admin
         :phone_number,
         :is_hub
       )
-    end # rubocop:disable Metrics/MethodLength
+    end
+
+    # rubocop:enable Metrics/MethodLength
   end
 end

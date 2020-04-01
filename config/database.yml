@@ -24,10 +24,6 @@ default: &default
   username: <%= ENV['APOCALYPSE_DELIVERY_DATABASE_USERNAME'] %>
   password: <%= ENV['APOCALYPSE_DELIVERY_DATABASE_PASSWORD'] %>
 
-  username: <%= ENV['APOCALYPSE_DELIVERY_DATABASE_USERNAME'] %>
-  password: <%= ENV['APOCALYPSE_DELIVERY_DATABASE_PASSWORD'] %>
-  host: localhost
-
 development:
   <<: *default
   database: apocalypse_delivery_development
