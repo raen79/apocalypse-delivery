@@ -1,4 +1,4 @@
-<% admin_breadcrumb(link_to t('.title'), spree.admin_trade_stores_path) %>
+<% admin_breadcrumb(link_to t('.title'), admin_trade_stores_path) %>
 <% admin_breadcrumb(t('.edit_store')) %>
 
 <div data-hook="admin_user_new_form_header">
@@ -7,10 +7,9 @@
 
 <div data-hook="admin_store_edit_form">
   <%= form_for [:admin, @store], as: :store, url: admin_trade_store_url(@store), method: :put do |f| %>
-    <%= render partial: 'form', locals: { f: f } %>
-
-    <div data-hook="admin_user_edit_form_button">
-      <%= render partial: 'spree/admin/shared/edit_resource_links', locals: { collection_url: admin_users_url } %>
-    </div>
+    <fieldset class="no-border-top">
+      <%= render partial: 'form', locals: { f: f } %>
+      <%= render partial: 'spree/admin/shared/edit_resource_links', locals: { collection_url: admin_trade_stores_url } %>
+    </fieldset>
   <% end %>
 </div>
