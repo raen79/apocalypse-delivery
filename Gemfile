@@ -29,9 +29,7 @@ gem 'rspec-rails'
 gem 'solidus'
 gem 'solidus_auth_devise'
 
-gem 'solidus_cloudinary'
-gem 'carrierwave'
-gem 'cloudinary'
+gem 'open_solidus_cloudinary', github: 'Berlimioz/open_solidus_cloudinary'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
