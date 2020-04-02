@@ -454,6 +454,8 @@ DEPENDENCIES
   bootsnap (>= 1.4.2)
   byebug
   capybara (>= 2.15)
+  carrierwave
+  cloudinary
   dotenv-rails
   factory_bot_rails
   jbuilder (~> 2.7)
