@@ -1,0 +1,15 @@
+<% admin_breadcrumb(link_to t('.title'), admin_trade_stores_path) %>
+<% admin_breadcrumb(t('.new_store')) %>
+
+<div data-hook="admin_user_new_form_header">
+  <%= render partial: 'spree/shared/error_messages', locals: { target: @store } %>
+</div>
+
+<div data-hook="admin_store_new_form">
+  <%= form_for [:admin, @store], url: admin_trade_stores_url, method: :post do |f| %>
+    <fieldset class="no-border-top">
+      <%= render partial: 'form', locals: { f: f } %>
+      <%= render partial: 'spree/admin/shared/new_resource_links' %>
+    </fieldset>
+  <% end %>
+</div>
