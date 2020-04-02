@@ -13,6 +13,7 @@ module Admin
 
     def create
       @store = ::Store.new(store_params)
+
       if @store.save
         redirect_to edit_admin_trade_store_url(@store), notice: t('.created_successfully')
       else
@@ -37,10 +38,6 @@ module Admin
     end
 
     private
-
-    def model_class
-      ::Store
-    end
 
     # rubocop:disable Metrics/MethodLength
     def store_params
