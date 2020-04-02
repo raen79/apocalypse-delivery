@@ -29,6 +29,8 @@ gem 'rspec-rails'
 gem 'solidus'
 gem 'solidus_auth_devise'
 
+gem 'solidus_cloudinary'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
