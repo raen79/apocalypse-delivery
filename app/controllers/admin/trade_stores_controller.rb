@@ -39,6 +39,10 @@ module Admin
 
     private
 
+    def model_class
+      ::Store
+    end
+
     # rubocop:disable Metrics/MethodLength
     def store_params
       params.require(:store).permit(
