@@ -81,6 +81,7 @@ RSpec.configure do |config|
         uncommitted transaction data setup over the spec's database connection.
       MSG
     end
+
     DatabaseCleaner.clean_with(:truncation)
   end
 
@@ -91,7 +92,10 @@ RSpec.configure do |config|
     # with the specs, so continue to use transaction strategy for speed.
     driver_shares_db_connection_with_specs = Capybara.current_driver == :rack_test
 
-    DatabaseCleaner.strategy = :truncation unless driver_shares_db_connection_with_specs # specs, so use truncation strategy. # under test that does *not* share a database connection with the # Driver is probably for an external browser with an app
+    # specs, so use truncation strategy.
+    # under test that does *not* share a database connection with the
+    # Driver is probably for an external browser with an app
+    DatabaseCleaner.strategy = :truncation unless driver_shares_db_connection_with_specs
   end
 
   config.before(:each) { DatabaseCleaner.start }
