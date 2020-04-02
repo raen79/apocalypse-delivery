@@ -7,5 +7,5 @@ if ENV['CLOUDINARY_URL'] && ENV['CLOUDINARY_API_KEY'] && ENV['CLOUDINARY_API_SEC
     config.api_secret = ENV['CLOUDINARY_API_SECRET']
   end
 else
-  Rails.logger.info { puts '****** Warning: There is no 'cloudinary' configuration info' }
+  Rails.logger.info { puts "****** Warning: There is no 'cloudinary' configuration info" }
 end
