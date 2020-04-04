@@ -72,4 +72,18 @@ describe 'Stores Admin', type: :feature do
       expect(tested_store.reload.name).to eq('Testestorn')
     end
   end
+
+  # FIXME: Issues with Selenium/browser config
+  # describe 'deliting existing store', js: true do
+  #   it 'is cast back to hell' do
+  #     tested_store = create(:store, name: 'Testie')
+
+  #     visit '/admin/trade_stores'
+
+  #     click_on 'Delete'
+  #     click_on 'Ok'
+
+  #     expect(page).to have_content('Store "Testie" has been successfully removed!')
+  #   end
+  # end
 end

@@ -32,7 +32,8 @@
           <td><%= store.is_hub ? 'Hub' : '' %></td>
           <td class="align-center"><%= l store.updated_at.to_date %></td>
           <td class="actions">
-          <%= link_to_edit store, no_text: true %>
+          <%= link_to_edit store, no_text: true, url: edit_admin_trade_store_url(store) %>
+          <%= link_to_delete store, no_text: true, url: admin_trade_store_url(store) %>
           </td>
         </tr>
       <% end %>

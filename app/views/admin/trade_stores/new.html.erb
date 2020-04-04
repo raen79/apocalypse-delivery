@@ -9,7 +9,7 @@
   <%= form_for [:admin, @store], url: admin_trade_stores_url, method: :post do |f| %>
     <fieldset class="no-border-top">
       <%= render partial: 'form', locals: { f: f } %>
-      <%= render partial: 'spree/admin/shared/new_resource_links' %>
+      <%= render partial: 'spree/admin/shared/new_resource_links', locals: { collection_url: admin_trade_stores_url } %>
     </fieldset>
   <% end %>
 </div>
