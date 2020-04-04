@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 if ENV['BUCKETEER_AWS_ACCESS_KEY_ID']
   Paperclip::Attachment.default_options.merge!(
     storage: :fog,
