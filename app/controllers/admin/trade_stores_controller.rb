@@ -15,7 +15,7 @@ module Admin
       @store = ::Store.new(store_params)
 
       if @store.save
-        redirect_to edit_admin_trade_store_url(@store), notice: t('.created_successfully')
+        redirect_to admin_trade_stores_url, notice: t('.created_successfully')
       else
         flash.now[:error] = @store.errors.full_messages.join(', ')
         render :new, status: :unprocessable_entity
