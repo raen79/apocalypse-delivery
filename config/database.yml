@@ -21,6 +21,10 @@ default: &default
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
+  username: <%= ENV['APOCALYPSE_DELIVERY_DATABASE_USERNAME'] %>
+  password: <%= ENV['APOCALYPSE_DELIVERY_DATABASE_PASSWORD'] %>
+  host: localhost
+
 development:
   <<: *default
   database: apocalypse_delivery_development

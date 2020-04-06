@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 FactoryBot.define do
-  factory :store do
+  factory :our_store, class: 'Store' do
     sequence(:name) { |n| "Albatross#{n}" }
 
     email { 'albatross@albatross.com' }

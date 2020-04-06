@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe Store, type: :model do
-  subject(:store) { FactoryBot.create(:store) }
+  subject(:store) { FactoryBot.create(:our_store) }
 
   describe 'validations' do
     it { should validate_presence_of(:name) }
@@ -25,7 +25,7 @@ RSpec.describe Store, type: :model do
       end
 
       context 'when set to false' do
-        let(:store) { FactoryBot.create(:store, is_hub: false) }
+        let(:store) { FactoryBot.create(:our_store, is_hub: false) }
         it { is_expected.to be_falsy }
       end
     end
