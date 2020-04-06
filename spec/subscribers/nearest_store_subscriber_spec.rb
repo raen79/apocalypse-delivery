@@ -7,21 +7,19 @@ require 'spree/testing_support/factories/order_factory'
 RSpec.describe 'Nearest Store Subscriber' do
   let!(:store) do
     Geocoder::Lookup::Test.add_stub(
-      "116 Reichenberger Str., Berlin, 10999", [
-        { 'coordinates'  => [40.7143528, -74.0059731] }
-      ]
+      '116 Reichenberger Str., Berlin, 10999',
+      [{ 'coordinates' => [40.7143528, -74.0059731] }]
     )
     create(:our_store, is_hub: true)
   end
 
   let!(:order) do
     Geocoder::Lookup::Test.add_stub(
-      "123 Seasame street, Northwest, Herndon, 666", [
-        { 'coordinates'  => [40.7143528, -74.005972] }
-      ]
+      '123 Seasame street, Northwest, Herndon, 666',
+      [{ 'coordinates' => [40.7143528, -74.005972] }]
     )
 
-    address = create(:address,  address1: '123 Seasame street', zipcode: '666')
+    address = create(:address, address1: '123 Seasame street', zipcode: '666')
     create(:order, ship_address: address)
   end
 
