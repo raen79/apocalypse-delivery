@@ -8,7 +8,7 @@ RSpec.describe 'Taxonomies Admin', type: :request do
   subject(:body) { response.body }
   let(:parsed_body) { Nokogiri.HTML(body) }
 
-  let!(:store) { FactoryBot.create(:store) }
+  let!(:store) { FactoryBot.create(:our_store) }
 
   let(:locked_taxonomy) { store.taxonomy }
   let!(:editable_taxonomy) { FactoryBot.create(:taxonomy) }

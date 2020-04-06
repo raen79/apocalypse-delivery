@@ -7,6 +7,7 @@ class Store < ApplicationRecord
   attr_writer :taxonomy, :root_taxon
 
   belongs_to :spree_taxon, class_name: 'Spree::Taxon', dependent: :destroy
+  has_many :orders, class_name: 'Spree::Order', foreign_key: 'nearest_store_id'
 
   validates :name, presence: true, uniqueness: true
   validates :email, presence: true
@@ -21,6 +22,9 @@ class Store < ApplicationRecord
   before_commit :persist_taxon, on: :create
 
   before_update :update_taxon_name
+  before_save :geocode
+
+  geocoded_by :address_from_components
 
   def taxonomy
     @taxonomy ||= Spree::Taxonomy.find_by(name: TAXONOMY_NAME)
@@ -31,6 +35,10 @@ class Store < ApplicationRecord
   end
 
   private
+
+  def address_from_components
+    "#{street_number} #{street}, #{city}, #{postcode}"
+  end
 
   def create_taxon
     self.spree_taxon = Spree::Taxon.create(name: name, taxonomy: taxonomy)

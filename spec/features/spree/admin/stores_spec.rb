@@ -9,8 +9,8 @@ describe 'Stores Admin', type: :feature do
 
   describe 'listing page' do
     before do
-      create(:store, name: 'Testie')
-      create(:store, name: 'Too testie')
+      create(:our_store, name: 'Testie')
+      create(:our_store, name: 'Too testie')
     end
 
     it 'shows existing stores' do
@@ -60,7 +60,7 @@ describe 'Stores Admin', type: :feature do
 
   describe 'editing existing store' do
     it 'is editable' do
-      tested_store = create(:store, name: 'Testie')
+      tested_store = create(:our_store, name: 'Testie')
 
       visit '/admin/trade_stores'
       click_on 'Testie'
