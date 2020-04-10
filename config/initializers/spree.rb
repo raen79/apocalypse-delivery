@@ -10,7 +10,7 @@ Spree.config do |config|
     'EUR'
 
   # from address for transactional emails
-  config.mails_from = 'store@example.com'
+  config.mails_from = 'store@archipel.berlin'
 
   # Uncomment to stop tracking inventory levels in the application
   # config.track_inventory_levels = false
@@ -23,6 +23,9 @@ Spree.config do |config|
   # Enable Paperclip adapter for attachments on images and taxons
   config.image_attachment_module = 'Spree::Image::PaperclipAttachment'
   config.taxon_attachment_module = 'Spree::Taxon::PaperclipAttachment'
+
+  config.logo = 'logo/archipel.png'
+  config.admin_interface_logo = 'logo/archipel.png'
 
   # Permission Sets:
 
