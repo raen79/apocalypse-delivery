@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_06_102925) do
+ActiveRecord::Schema.define(version: 2020_04_10_101212) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'plpgsql'
 
@@ -341,6 +341,7 @@ ActiveRecord::Schema.define(version: 2020_04_06_102925) do
     t.string 'approver_name'
     t.boolean 'frontend_viewable', default: true, null: false
     t.bigint 'nearest_store_id'
+    t.datetime 'picked_at'
     t.index %w[approver_id], name: 'index_spree_orders_on_approver_id'
     t.index %w[bill_address_id], name: 'index_spree_orders_on_bill_address_id'
     t.index %w[completed_at], name: 'index_spree_orders_on_completed_at'
@@ -348,6 +349,7 @@ ActiveRecord::Schema.define(version: 2020_04_06_102925) do
     t.index %w[guest_token], name: 'index_spree_orders_on_guest_token'
     t.index %w[nearest_store_id], name: 'index_spree_orders_on_nearest_store_id'
     t.index %w[number], name: 'index_spree_orders_on_number'
+    t.index %w[picked_at], name: 'index_spree_orders_on_picked_at'
     t.index %w[ship_address_id], name: 'index_spree_orders_on_ship_address_id'
     t.index %w[user_id created_by_id], name: 'index_spree_orders_on_user_id_and_created_by_id'
     t.index %w[user_id], name: 'index_spree_orders_on_user_id'

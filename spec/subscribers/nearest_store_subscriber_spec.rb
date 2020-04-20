@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
-
 require 'spree/testing_support/factories/order_factory'
 
 RSpec.describe 'Nearest Store Subscriber' do
